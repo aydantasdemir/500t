@@ -48,7 +48,7 @@ def add_log(request):
         if form.is_valid():
             form.save(request.user)
             messages.success(request, 'Log başarıyla eklendi.')
-            redirect('home')
+            return redirect('home')
 
     template_data = {
         'form': form,
