@@ -30,7 +30,7 @@
                         {{ log.body|linebreaksbr }}
                     </p></blockquote>
 
-                <i class="icon-time"> </i> {{ log.created_at }} tarihinde <a href="#">@emre_yilmaz</a> tarafından gönderildi.
+                <i class="icon-time"> </i> {{ log.created_at }} tarihinde <a href="http://twitter.com/{{log.sender.username}}">@{{ log.sender.username }}</a> tarafından gönderildi.
 
                 <br><br>
                 <div id="disqus_thread"></div>

@@ -116,6 +116,7 @@ INSTALLED_APPS = (
     'social_auth',
     'debug_toolbar',
     'pagination',
+    'gunicorn',
 )
 
 LOGGING = {
