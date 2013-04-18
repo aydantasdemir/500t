@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<div class="widget">
+    <div class="row-fluid">
+        <div class="span7">
+
+            <div class="widget-header">
+                <h3>{{ log.title }} <span class="label label-info" id="point_{{log.id}}">{{ log.karma }} puan</span></h3>
+
+            </div>
+
+            <div class="widget-content">
+                <a href="{% url 'vote' log.id 1 %}" class="iconic" point_element="point_{{log.id}}">
+                    <i class="icon-plus-sign" alt="Beğen"></i>
+                </a>
+
+                &nbsp;
+
+                <a href="{% url 'vote' log.id 2 %}" class="iconic" point_element="point_{{log.id}}">
+                    <i class="icon-minus-sign"></i>
+                </a>
+
+                <br style="margin-bottom: 5px;">
+
+                <blockquote>
+                    <p>
+                        {{ log.body|linebreaksbr }}
+                    </p></blockquote>
+
+                <i class="icon-time"> </i> {{ log.created_at }} tarihinde <a href="#">@emre_yilmaz</a> tarafından gönderildi.
+
+                <br><br>
+                <div id="disqus_thread"></div>
+                <script type="text/javascript">
+                    var disqus_shortname = '500torg';
+
+                    /* * * DON'T EDIT BELOW THIS LINE * * */
+                    (function() {
+                        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                    })();
+                </script>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock content %}

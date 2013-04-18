@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>500t.org </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}css/500t.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/font-awesome.min.css">
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css">
+    <![endif]-->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet"></head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+
+    <div class="navbar-inner">
+
+        <div class="container-fluid">
+
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+
+            <a class="brand" href="/">500t.org</a>
+
+            <div class="nav-collapse">
+
+                <ul class="nav pull-left">
+                    <div class="navbar-inner">
+                        <ul class="nav">
+                            <li class="{% if request.path == '/' %}active{% endif %}"><a href="{% url 'home' %}">Anasayfa</a></li>
+                            <li class="{% if 'fav' in request.path %}active{% endif %}"><a href="{% url 'favorites' %}">En çok beğenilenler</a></li>
+                            <li class="{% if 'add' in request.path %}active{% endif %}"><a href="{% url 'add_log' %}/">Ekle</a></li>
+                        </ul>
+                    </div>
+
+                </ul>
+                {% if request.user.is_authenticated %}
+                <ul class="nav pull-right">
+                    <li class="divider-vertical"></li>
+                    <li class="dropdown">
+
+                        <a data-toggle="dropdown" class="dropdown-toggle " href="#">
+                            <img src="{{ user_avatar|safe }}" style="width:18px; height: 18px">
+                           {{ request.user.username }}<b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="http://www.youtube.com/watch?v=XRPW5bB3GCI" target="_blank">
+                                <i class="icon-facetime-video"></i>   Bonus
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="{% url 'logout' %}"><i class="icon-off"></i> Çıkış yap</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                {% endif %}
+
+            </div> <!-- /nav-collapse -->
+
+
+        </div> <!-- /container -->
+
+    </div> <!-- /navbar-inner -->
+
+</div> <!-- /navbar -->
+
+
+
+
+<div class="container-fluid" id="content">
+
+    <div class="row-fluid">
+        {% if messages %}
+        {% for message in messages %}
+        {% if message.tags == 'error' %}
+        <div class="alert alert-error">
+            {% else %}
+            <div class="alert alert-success">
+                {% endif %}
+                <a class="close" data-dismiss="alert" href="#">×</a>
+                {{ message }}
+            </div>
+            {% endfor %}
+            {% endif %}
+
+
+        {% block content %}
+
+        {% endblock %}
+    </div>
+</div> <!-- /container -->
+
+
+
+<div id="footer">
+
+    <div class="container-fluid">
+        <hr>
+        <p>
+        <a href="http://github.com/emre/500t.org" style="text-decoration: none !important;">  <i class="icon-github"></i> fork me</a>
+        </p>
+    </div> <!-- /container -->
+
+</div> <!-- /footer -->
+
+
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="{{ STATIC_URL }}js/jquery-1.9.1.min.js"></script>
+<script src="{{ STATIC_URL }}js/bootstrap.js"></script>
+<script src="{{ STATIC_URL }}js/500t.js"></script>
+
+{% block extra_js %}
+{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h4>
+    Kayıt ekleyebilmek için twitter ile login olmalısınız.
+</h4>
+<a href="{% url 'socialauth_begin' 'twitter' %}"><img src="{{ STATIC_URL }}img/twitter-connect.png" alt="Sign in with Twitter"/> </a>
+{% endblock content %}
