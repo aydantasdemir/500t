@@ -14,7 +14,7 @@ class Log(models.Model):
     title = models.CharField("Başlık", max_length=255)
     body = models.TextField("İçerik")
     is_enabled = models.BooleanField(default=True)
-    created_at = models.DateTimeField(default=datetime.datetime.now())
+    created_at = models.DateTimeField(auto_now_add=True)
     sender = models.ForeignKey(User, verbose_name="Gönderen")
     visit_count = models.IntegerField(default=0)
     karma = models.IntegerField(default=0)
