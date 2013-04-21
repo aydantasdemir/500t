@@ -27,6 +27,12 @@ class Log(models.Model):
 
     objects = LogManager()
 
+    def increment_visit_count(self):
+        self.visit_count += 1
+        self.save()
+
+        return self
+
 
 VOTE_CHOICES = (
     (1, 'up'),
