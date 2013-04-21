@@ -2,15 +2,14 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 
-from logs.views import home, vote, favorites, add_log, login, logout, log_detail
+from logs.views import logs, vote, add_log, login, logout, log_detail
 
 # admin
 admin.autodiscover()
 
 urlpatterns = patterns(
     '',
-    url(r'^$', home, name='home'),
-    url(r'^favorites/$', favorites, name='favorites'),
+    url(r'^$', logs, name='home'),
     url(r'^vote/([0-9]*?)/([1-2]*)/', vote, name="vote"),
     url(r'^add', add_log, name="add_log"),
     url(r'', include('social_auth.urls')),

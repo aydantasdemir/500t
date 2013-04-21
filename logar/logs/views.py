@@ -11,18 +11,9 @@ from models import Log, Vote
 from forms import AddLogForm
 
 
-def home(request):
-
+def logs(request):
     template_data = {
-        'logs': Log.objects.get_latest_logs(),
-    }
-
-    return render(request, "logs.html", template_data)
-
-
-def favorites(request):
-    template_data = {
-        'logs': Log.objects.get_favorites(),
+        'logs': Log.objects.get_all(request)
     }
 
     return render(request, "logs.html", template_data)
@@ -59,7 +50,7 @@ def login(request):
 
 
 def log_detail(request, log_id):
-    log = get_object_or_404(Log, pk=log_id)
+    log = get_object_or_404(Log, pk=log_id).increment_visit_count()
 
     template_data = {
         'log': log,
