@@ -37,7 +37,7 @@
                 <ul class="nav pull-left">
                     <div class="navbar-inner">
                         <ul class="nav">
-                            <li class="{% if request.path == '/' %}active{% endif %}"><a href="{% url 'home' %}">Anasayfa</a></li>
+                            <li class="{% if request.path == '/' %}active{% endif %}"><a href="{% url 'home' %}">Ana sayfa</a></li>
                             <li class="{% if 'fav' in request.path %}active{% endif %}"><a href="{% url 'favorites' %}">En çok beğenilenler</a></li>
                             <li class="{% if 'add' in request.path %}active{% endif %}"><a href="{% url 'add_log' %}/">Ekle</a></li>
                         </ul>
