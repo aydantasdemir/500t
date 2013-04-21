@@ -14,6 +14,8 @@ class LogManager(models.Manager):
                 logs = logs.order_by("-karma")
             elif request.GET["o"] == 'visit_count':
                 logs = logs.order_by("-visit_count")
+            elif request.GET["o"] == 'huseyinalb':
+                logs = logs.order_by("karma")
 
         else:
             logs = logs.order_by("-id")
