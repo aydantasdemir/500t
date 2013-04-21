@@ -1,5 +1,7 @@
 # -*- coding: utf8 -*-
 
+import json
+
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from django.contrib.auth.views import auth_logout
@@ -7,11 +9,6 @@ from django.contrib import messages
 
 from models import Log, Vote
 from forms import AddLogForm
-
-try:
-    import simplejson as json
-except ImportError:
-    import json
 
 
 def home(request):
