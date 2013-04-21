@@ -5,14 +5,20 @@ from django.db import models
 
 class LogManager(models.Manager):
 
-    def get_latest_logs(self):
-        return self.get_query_set().filter(is_enabled=True).order_by("-id")
+    def get_all(self, request):
 
-    def get_favorites(self):
-        return self.get_query_set().filter(is_enabled=True).order_by("-karma")
+        logs = self.get_query_set().all()
 
-    def get_most_visited(self):
-        return self.get_query_set().filter(is_enabled=True).order_by("-visit_count")
+        if 'o' in request.GET:
+            if request.GET["o"] == 'favorites':
+                logs = logs.order_by("-karma")
+            elif request.GET["o"] == 'visit_count':
+                logs = logs.order_by("-visit_count")
+
+        else:
+            logs = logs.order_by("-id")
+
+        return logs
 
 
 class VoteManager(models.Manager):
