@@ -4,43 +4,8 @@
 {% autopaginate logs 5 %}
 
 
-
 {% for log in logs %}
-<div class="widget">
-    <div class="row-fluid">
-        <div class="span7">
-
-            <div class="widget-header">
-                <h3><a href="{% url 'log_detail' log.id %}">{{ log.title }}</a> <span class="label label-info" id="point_{{log.id}}">{{ log.karma }} puan</span></h3>
-
-            </div>
-
-            <div class="widget-content">
-             <a href="{% url 'vote' log.id 1 %}" class="iconic" point_element="point_{{log.id}}">
-                    <i class="icon-plus-sign" alt="Beğen"></i>
-                </a>
-
-                &nbsp;
-
-                <a href="{% url 'vote' log.id 2 %}" class="iconic" point_element="point_{{log.id}}">
-                    <i class="icon-minus-sign"></i>
-                </a>
-
-                <br style="margin-bottom: 5px;">
-
-                <blockquote>
-                <p>
-                    {{ log.body|linebreaksbr }}
-                </p></blockquote>
-
-                <i class="icon-time"> </i> {{ log.created_at }} tarihinde <a href="http://twitter.com/{{log.sender.username}}">@{{log.sender.username}}</a> tarafından gönderildi.
-                <br>
-            </div>
-        </div>
-    </div>
-</div>
-
-
+    {% include 'log_block.html' with log=log comment=False %}
 {% endfor %}
 
 {% paginate %}
