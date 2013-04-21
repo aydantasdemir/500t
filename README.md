@@ -5,3 +5,11 @@ webapp for storing funny irc logs. contains exclusive turkish trolling, powers 5
 
 <img src="https://raw.github.com/emre/logar/master/500t.png">
 
+installation
+===================
+
+* ```pip install -r requirements.txt```
+* move local_settings.ex to local_settings.py and set your config.
+* ```python manage.py collectstatic```
+* ```python manage.py runserver``` 
+
