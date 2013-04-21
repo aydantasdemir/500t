@@ -83,7 +83,7 @@ def vote(request, log, vote_type):
             'status': 1,
             'message': vote.log.karma,
         })
-    except Exception, error:
+    except Exception as error:
         response.update({
             'status': 0,
             'message': str(error),
