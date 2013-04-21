@@ -11,5 +11,7 @@ installation
 * ```pip install -r requirements.txt```
 * move local_settings.ex to local_settings.py and set your config.
 * ```python manage.py collectstatic```
+* ```python manage.py syncdb```
+* ```python manage.py migrate```
 * ```python manage.py runserver``` 
 
