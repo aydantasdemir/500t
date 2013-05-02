@@ -11,6 +11,7 @@ from managers import VoteManager
 class Log(models.Model):
     title = models.CharField("Başlık", max_length=255)
     body = models.TextField("İçerik")
+    info = models.CharField("Sunucu / Kanal bilgisi", max_length=255, blank=True, null=True)
     is_enabled = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     sender = models.ForeignKey(User, verbose_name="Gönderen")
