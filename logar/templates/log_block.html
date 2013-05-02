@@ -26,7 +26,7 @@
                     </p></blockquote>
 
                 <i class="icon-time"> </i> {{ log.created_at }} tarihinde <a href="http://twitter.com/{{log.sender.username}}">@{{ log.sender.username }}</a> tarafından gönderildi.
-                {% if log.info %} <br /> <i class="icon-cloud"></i> ilgili sunucu/kanal: {{ log.info }} {% endif %}
+                {% if log.info %} <br /> <i class="icon-laptop"></i> ilgili sunucu/kanal: {{ log.info }} {% endif %}
                 {% if comment %}
                 <br><br>
                 <div id="disqus_thread"></div>
