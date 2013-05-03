@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load pagination_tags %}
 {% block content %}
-{% autopaginate logs 5 %}
+{% autopaginate logs 10 %}
 
 
 {% for log in logs %}
