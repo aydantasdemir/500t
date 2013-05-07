@@ -1,4 +1,5 @@
 # -*- coding: utf8 -*-
+from django.utils.encoding import smart_str
 
 from irc import IRCBot, run_bot
 
@@ -18,8 +19,9 @@ class LogarBot(IRCBot):
 
     def random_log(self, nick, message, channel):
         r = requests.get("http://500t.org/api/random/")
+        print r.encoding
         log = json.loads(r.text)[0]
-        return '%s: %s - http://500t.org/log/%s' % (nick, log.get("fields").get("title"), log.get("pk"))
+        return smart_str('%s: %s - http://500t.org/log/%s' % (nick, log.get("fields").get("title"), log.get("pk")))
 
     def command_patterns(self):
         return (
@@ -32,4 +34,4 @@ host = 'irc.freenode.net'
 port = 6667
 nick = 'esra'
 
-run_bot(LogarBot, host, port, nick, ['#pyistanbul', '#brotoss'])
+run_bot(LogarBot, host, port, nick, ['#brotoss', '#pyistanbul', ])
