@@ -6,6 +6,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from django.contrib.auth.views import auth_logout
 from django.contrib import messages
+from django.http import Http404
 
 from models import Log, Vote
 from forms import AddLogForm
@@ -78,3 +79,17 @@ def vote(request, log, vote_type):
         })
 
     return HttpResponse(json.dumps(response), content_type="application/json")
+
+
+def search(request):
+    if request.method == 'POST':
+        if 'search_text' in request.POST:
+            logs = Log.objects.search_text(request.POST.get("search_text"))
+
+            if len(logs) == 0:
+                messages.error(request, 'Sonuç bulunamadı.')
+
+            return render(request, "logs.html", {"logs": logs})
+        else:
+            raise Http404
+    raise Http404

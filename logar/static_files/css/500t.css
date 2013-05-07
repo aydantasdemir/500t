@@ -455,3 +455,9 @@ div.ex
 textarea {
     width:500px;
 }
+
+.tsearch {
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+}

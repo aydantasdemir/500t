@@ -71,7 +71,10 @@
                 {% endif %}
 
             </div> <!-- /nav-collapse -->
-
+        <form method="POST" action="{% url 'log_search' %}" class="navbar-search pull-left">
+            {% csrf_token %}
+            <input type="text" name="search_text" value="" class="search-query tsearch"/>
+        </form>
 
         </div> <!-- /container -->
 
@@ -113,7 +116,9 @@
         <hr>
         <p>
         <a href="https://github.com/pyistanbul/500t" style="text-decoration: none !important;">  <i class="icon-github"></i> fork me</a>
+
         </p>
+
     </div> <!-- /container -->
 
 </div> <!-- /footer -->

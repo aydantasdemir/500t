@@ -1,6 +1,7 @@
 # -*- coding: utf8 -*-
 
 from django.db import models
+from django.db.models import Q
 
 
 class LogManager(models.Manager):
@@ -22,6 +23,14 @@ class LogManager(models.Manager):
 
         return logs
 
+    def search_text(self, search_string):
+
+        logs = self.get_query_set().all().filter(
+            Q(body__contains=search_string) | Q(title__contains=search_string)
+        )
+
+        return logs
+
 
 class VoteManager(models.Manager):
     def add_vote(self, log, vote_type, ip_adress):
@@ -35,7 +44,7 @@ class VoteManager(models.Manager):
             vote = self.model()
             vote.vote_type = vote_type
             vote.ip = ip_adress
-            vote.log= log
+            vote.log = log
             vote.save()
 
         return vote

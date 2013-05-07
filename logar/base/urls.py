@@ -2,7 +2,7 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 
-from logs.views import logs, vote, add_log, login, logout, log_detail
+from logs.views import logs, vote, add_log, login, logout, log_detail, search
 
 # admin
 admin.autodiscover()
@@ -15,6 +15,7 @@ urlpatterns = patterns(
     url(r'', include('social_auth.urls')),
     url(r'^login', login, name="login"),
     url(r'^log/([0-9]*)/', log_detail, name="log_detail"),
+    url(r'^search/$', search, name="log_search"),
     url('^logout', logout, name="logout"),
     url(r'^admin/', include(admin.site.urls)),
 )
