@@ -7,6 +7,7 @@ from django.http import HttpResponse
 from django.contrib.auth.views import auth_logout
 from django.contrib import messages
 from django.http import Http404
+from django.core import serializers
 
 from models import Log, Vote
 from forms import AddLogForm
@@ -93,3 +94,8 @@ def search(request):
         else:
             raise Http404
     raise Http404
+
+
+def random_log(request):
+    data = serializers.serialize("json", Log.objects.all().order_by("?")[0:1])
+    return HttpResponse(data, content_type="application/json")

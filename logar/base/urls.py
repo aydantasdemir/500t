@@ -2,7 +2,7 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 
-from logs.views import logs, vote, add_log, login, logout, log_detail, search
+from logs.views import logs, vote, add_log, login, logout, log_detail, search, random_log
 
 # admin
 admin.autodiscover()
@@ -18,4 +18,7 @@ urlpatterns = patterns(
     url(r'^search/$', search, name="log_search"),
     url('^logout', logout, name="logout"),
     url(r'^admin/', include(admin.site.urls)),
+
+    # api
+    url(r'^api/random/', random_log, name="api_random_log"),
 )
