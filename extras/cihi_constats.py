@@ -27,6 +27,6 @@ GREETS = [
     'mrb tşkler',
     'selam cnmmmmmmmmmm :)',
     'sen yatiosun galiba ii gclr',
-    'selam ',
-    'a.s',
+    'selam yakisikli',
+    'selamlar...',
 ]
