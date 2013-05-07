@@ -19,7 +19,6 @@ class LogarBot(IRCBot):
 
     def random_log(self, nick, message, channel):
         r = requests.get("http://500t.org/api/random/")
-        print r.encoding
         log = json.loads(r.text)[0]
         return smart_str('%s: %s - http://500t.org/log/%s' % (nick, log.get("fields").get("title"), log.get("pk")))
 
