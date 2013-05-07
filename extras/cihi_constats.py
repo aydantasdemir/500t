@@ -24,9 +24,9 @@ ZEN_LIST = (
 
 GREETS = [
     'slm cnm nbr??',
-    'merhaba',
-    'howdy!',
-    'a.s kardeş',
-    'selam verenin çok olsun',
-    'tabi ya',
+    'mrb tşkler',
+    'selam cnmmmmmmmmmm :)',
+    'sen yatiosun galiba ii gclr',
+    'selam ',
+    'a.s',
 ]
