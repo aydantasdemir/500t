@@ -37,7 +37,7 @@
                 <ul class="nav pull-left">
                     <div class="navbar-inner">
                         <ul class="nav">
-                            <li class="{% if request.path == '/' and not request.GET.o %}active{% endif %}"><a href="{% url 'home' %}">Ana sayfa</a></li>
+                            <li class="{% if not request.GET.o %}active{% endif %}"><a href="{% url 'home' %}">Ana sayfa</a></li>
                             <li class="{% if request.GET.o == 'favorites' %}active{% endif %}"><a href="{% url 'home' %}?o=favorites">En çok beğenilenler</a></li>
                             <li class="{% if request.GET.o == 'visit_count' %}active{% endif %}"><a href="{% url 'home' %}?o=visit_count">En çok görüntülenenler</a></li>
                             <li class="{% if request.GET.o == 'huseyinalb' %}active{% endif %}"><a href="{% url 'home' %}?o=huseyinalb">En kötüler</a></li>
