@@ -49,4 +49,4 @@ host = 'irc.freenode.net'
 port = 6667
 nick = 'esra2'
 
-run_bot(LogarBot, host, port, nick, ['#brotoss2', '#pyistanbul2', ])
+run_bot(LogarBot, host, port, nick, ['#brotoss', '#pyistanbul', ])
