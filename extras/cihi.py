@@ -7,7 +7,7 @@ import random
 import requests
 import json
 
-from cihi_constats import GREETS, ZEN_LIST
+from cihi_constants import GREETS, ZEN_LIST
 
 
 class LogarBot(IRCBot):
