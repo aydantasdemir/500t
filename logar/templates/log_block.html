@@ -22,7 +22,7 @@
 
                 <blockquote>
                     <p>
-                        {{ log.body|linebreaksbr|urlize }}
+                        {{ log.body|urlize|linebreaksbr }}
                     </p></blockquote>
 
                 <i class="icon-time"> </i> {{ log.created_at }} tarihinde <a href="http://twitter.com/{{log.sender.username}}">@{{ log.sender.username }}</a> tarafından gönderildi.
