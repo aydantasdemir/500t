@@ -18,6 +18,9 @@ class LogarBot(IRCBot):
     def hamachi(self, nick, message, channel):
         return "WIN/MAC: https://secure.logmein.com/products/hamachi/download.aspx, LINUX: http://www.haguichi.net/download/ "
 
+    def sunucu(self, nick, message, channel):
+        return '"C:\Program Files\Counter-Strike 1.6\hlds.exe" -nomaster -game cstrike -insecure 25.134.176.188'
+
     def pyzen(self, nick, message, channel):
         return '%s: %s' % (nick, random.choice(ZEN_LIST))
 
@@ -38,6 +41,7 @@ class LogarBot(IRCBot):
             return smart_str(random.choice(re.findall('<p><strong>(.*?)</strong></p>', content, flags=re.MULTILINE)))
 
 
+
         r = requests.get("http://eksisozluk.com/?q=%s" % " ".join(message.split(" ")[0:2]))
         results = re.findall('<div class="content">(.*?)</div>', r.text)
 
@@ -51,6 +55,13 @@ class LogarBot(IRCBot):
 
             return smart_str(result)
 
+    def handle_all(self, nick, message, channel):
+        if 'twitter' in message:
+            return 'twitter buldum'
+
+        if 'youtube' in message:
+            return 'youtube buldum'
+
     def command_patterns(self):
         return (
             ('selam|merhaba|hi|hello', self.greet),
@@ -59,11 +70,13 @@ class LogarBot(IRCBot):
             ('!hamachi', self.hamachi),
             ('!cs_macfag', self.cs_macfag),
             ('!500t', self.random_log),
+            ('!cs_sunucu', self.sunucu),
             self.ping('.*', self.talk),
+            ('.*', self.handle_all)
         )
 
 host = 'irc.freenode.net'
 port = 6667
-nick = 'selin'
+nick = 'esra'
 
 run_bot(LogarBot, host, port, nick, ['#brotoss', '#pyistanbul', ])
