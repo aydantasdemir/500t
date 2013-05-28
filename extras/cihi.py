@@ -9,6 +9,7 @@ import json
 import re
 
 from cihi_constants import GREETS, ZEN_LIST
+from twitter_commands import get_tweet
 
 
 class LogarBot(IRCBot):
@@ -57,10 +58,12 @@ class LogarBot(IRCBot):
 
     def handle_all(self, nick, message, channel):
         if 'twitter' in message:
-            return 'twitter buldum'
+            tweet = get_tweet(message)
+            if tweet:
+                return tweet
 
         if 'youtube' in message:
-            return 'youtube buldum'
+            pass
 
     def command_patterns(self):
         return (
@@ -77,6 +80,6 @@ class LogarBot(IRCBot):
 
 host = 'irc.freenode.net'
 port = 6667
-nick = 'esra'
+nick = 'esrahanim'
 
 run_bot(LogarBot, host, port, nick, ['#brotoss', '#pyistanbul', ])
