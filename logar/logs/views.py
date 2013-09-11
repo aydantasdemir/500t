@@ -2,12 +2,12 @@
 
 import json
 
-from django.shortcuts import render, get_object_or_404, redirect
-from django.http import HttpResponse
-from django.contrib.auth.views import auth_logout
 from django.contrib import messages
-from django.http import Http404
+from django.contrib.auth.views import auth_logout
 from django.core import serializers
+from django.http import Http404, HttpResponse
+from django.shortcuts import render, get_object_or_404, redirect
+from django.views.decorators.http import require_POST
 
 from models import Log, Vote
 from forms import AddLogForm
@@ -82,18 +82,17 @@ def vote(request, log, vote_type):
     return HttpResponse(json.dumps(response), content_type="application/json")
 
 
+@require_POST
 def search(request):
-    if request.method == 'POST':
-        if 'search_text' in request.POST:
-            logs = Log.objects.search_text(request.POST.get("search_text"))
+    if 'search_text' not in request.POST:
+        raise Http404
 
-            if len(logs) == 0:
-                messages.error(request, 'Sonuç bulunamadı.')
+    logs = Log.objects.search_text(request.POST.get("search_text"))
 
-            return render(request, "logs.html", {"logs": logs})
-        else:
-            raise Http404
-    raise Http404
+    if not logs:
+        messages.error(request, 'Sonuç bulunamadı.')
+
+    return render(request, "logs.html", {"logs": logs})
 
 
 def random_log(request):
