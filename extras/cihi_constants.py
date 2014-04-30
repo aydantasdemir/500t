@@ -29,4 +29,5 @@ GREETS = [
     'sen yatiosun galiba ii gclr',
     'selam yakisikli',
     'selamlar...',
+    'Merhaba güzel kız',
 ]
